@@ -192,11 +192,11 @@ sequenceDiagram
     participant VM as Virtual Machine
 
     Source->>Lexer: "let x = 2 + 3 * 4"
-    Lexer->>Parser: [LET, IDENT(x), EQ, NUM(2), PLUS, NUM(3), STAR, NUM(4)]
-    Parser->>IR: AST: Let(x, Add(2, Mul(3, 4)))
-    IR->>CG: t1 = 3 * 4; t2 = 2 + t1; x = t2
-    CG->>VM: PUSH 3; PUSH 4; MUL; PUSH 2; ADD; STORE x
-    VM->>VM: Execute → x = 14
+    Lexer->>Parser: "[LET, IDENT(x), EQ, NUM(2), PLUS, NUM(3), STAR, NUM(4)]"
+    Parser->>IR: "AST: Let(x, Add(2, Mul(3, 4)))"
+    IR->>CG: "t1 = 3 * 4 | t2 = 2 + t1 | x = t2"
+    CG->>VM: "PUSH 3 | PUSH 4 | MUL | PUSH 2 | ADD | STORE x"
+    VM->>VM: "Execute: x = 14"
 ```
 
 ### Tradeoffs and Alternatives
